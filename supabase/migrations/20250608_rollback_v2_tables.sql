@@ -1,0 +1,2 @@
+-- File ini diganti. Pakai:
+-- supabase/migrations/20250608_rollback_all_wcc_tables.sql

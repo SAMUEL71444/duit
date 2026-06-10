@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-success: #1D9E75;
+    --color-danger: #E24B4A;
+    --color-warning: #BA7517;
+    --color-info: #378ADD;
+    --font-inter: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    border-color: theme('colors.gray.800');
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-gray-950 text-gray-100;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-950;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-emerald-600/40 text-white;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.gray.700') theme('colors.gray.950');
+  }
+
+  /* Animate in */
+  .animate-in {
+    animation-fill-mode: both;
+  }
+
+  .fade-in {
+    animation-name: fadeIn;
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+  }
+
+  .zoom-in-95 {
+    animation-name: zoomIn95;
+    animation-duration: 200ms;
+    animation-timing-function: ease-out;
+  }
+
+  /* Progress bar animation */
+  .progress-bar {
+    transition: width 0.6s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn95 {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  from { background-position: -200px 0; }
+  to { background-position: calc(200px + 100%) 0; }
+}
+
+/* Recharts global dark theme overrides */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #1f2937 !important;
+}
+
+.recharts-text {
+  fill: #6b7280 !important;
+  font-size: 12px;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: #111827 !important;
+  border: 1px solid #374151 !important;
+  border-radius: 8px !important;
+}
+
+.recharts-default-tooltip .recharts-tooltip-label {
+  color: #d1d5db !important;
+}
+
+/* Kanban drag ghost */
+.drag-ghost {
+  opacity: 0.5;
+  transform: rotate(2deg);
+}
