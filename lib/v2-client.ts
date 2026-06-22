@@ -1,4 +1,5 @@
-type Row = Record<string, unknown>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Row = Record<string, any>
 
 async function parseJson<T>(res: Response): Promise<T> {
   const data = await res.json()
@@ -11,12 +12,14 @@ async function parseJson<T>(res: Response): Promise<T> {
 }
 
 export const v2Api = {
-  async list<T extends Row>(table: string, params?: Record<string, string>): Promise<T[]> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async list<T = any>(table: string, params?: Record<string, string>): Promise<T[]> {
     const qs = params ? `?${new URLSearchParams(params)}` : ''
     return parseJson<T[]>(await fetch(`/api/v2/${table}${qs}`))
   },
 
-  async create<T extends Row>(table: string, payload: Row): Promise<T> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async create<T = any>(table: string, payload: Row): Promise<T> {
     return parseJson<T>(await fetch(`/api/v2/${table}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -24,7 +27,8 @@ export const v2Api = {
     }))
   },
 
-  async update<T extends Row>(table: string, id: string, payload: Row): Promise<T> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async update<T = any>(table: string, id: string, payload: Row): Promise<T> {
     return parseJson<T>(await fetch(`/api/v2/${table}/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
