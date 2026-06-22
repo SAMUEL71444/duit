@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase-server'
-import { Resend } from 'resend'
 
 // DCA Reminder — dipanggil oleh Supabase Edge Function cron
 // Endpoint ini mengirim email reminder H-1 sebelum jadwal DCA
-
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,6 +13,14 @@ export async function POST(request: NextRequest) {
     if (expectedKey && authHeader !== `Bearer ${expectedKey}`) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
+
+    const resendKey = process.env.RESEND_API_KEY
+    if (!resendKey || resendKey === 're_xxx') {
+      return NextResponse.json({ message: 'Resend API key belum dikonfigurasi', count: 0 })
+    }
+
+    const { Resend } = await import('resend')
+    const resend = new Resend(resendKey)
 
     const supabase = await createClient()
 
@@ -80,3 +85,4 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
+
