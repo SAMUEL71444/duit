@@ -15,6 +15,7 @@ import { exportToCSV, exportToJSON, formatTanggalIndonesia } from '@/lib/export'
 import { Plus, Download, Copy, Trash2, Edit2, Search, Sparkles, BookOpen, Tag, Clock } from 'lucide-react'
 
 interface Prompt {
+  [key: string]: unknown
   id: string
   title: string
   content: string

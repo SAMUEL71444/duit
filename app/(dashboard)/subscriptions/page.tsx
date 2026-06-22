@@ -15,6 +15,7 @@ import { exportToCSV, exportToJSON, formatRupiah, formatRupiahSingkat, formatTan
 import { Plus, Download, Trash2, Edit2, TrendingUp, AlertTriangle, CheckCircle, XCircle } from 'lucide-react'
 
 interface Subscription {
+  [key: string]: unknown
   id: string
   name: string
   cost: number

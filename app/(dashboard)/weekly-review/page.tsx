@@ -13,6 +13,7 @@ import { formatTanggalIndonesia } from '@/lib/export'
 import { Sparkles, ChevronDown, ChevronRight, Calendar, Clock, Trash2 } from 'lucide-react'
 
 interface WeeklyReview {
+  [key: string]: unknown
   id: string
   week_start: string
   achievements: string | null

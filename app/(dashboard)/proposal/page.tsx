@@ -25,6 +25,7 @@ const PROJECT_TYPES = [
 ]
 
 interface Proposal {
+  [key: string]: unknown
   id: string
   client_name: string
   project_type: string | null
