@@ -17,6 +17,7 @@ import { Plus, Download, Trash2, Edit2, Target, CheckCircle, Circle, Clock, Chev
 type OKRStatus = 'on-track' | 'at-risk' | 'off-track' | 'completed'
 
 interface OKR {
+  [key: string]: unknown
   id: string
   title: string
   description: string | null
@@ -30,6 +31,7 @@ interface OKR {
 }
 
 interface KeyResult {
+  [key: string]: unknown
   id: string
   okr_id: string
   title: string

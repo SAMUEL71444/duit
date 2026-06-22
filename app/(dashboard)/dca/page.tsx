@@ -24,6 +24,7 @@ interface DCASchedule {
 }
 
 interface DCAExecution {
+  [key: string]: unknown
   id: string
   schedule_id: string
   executed_date: string

@@ -134,7 +134,7 @@ export default function WeeklyReviewPage() {
       }
 
       // Reset form
-      setForm({ week_start: thisMonday, achievements: '', challenges: '', next_week_goals: '', mood_score: 3 })
+      setForm({ week_start: thisMonday, achievements: '', challenges: '', next_week_goals: '', mood_score: 3, model: 'gemini-3.1-flash-lite' })
       setAiSummary('')
       setSummaryGenerated(false)
       fetchReviews()

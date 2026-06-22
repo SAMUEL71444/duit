@@ -18,6 +18,7 @@ import { Plus, Download, Trash2, RefreshCw, TrendingUp, TrendingDown, Wallet, Ba
 const COLORS = ['#1D9E75', '#378ADD', '#BA7517', '#7C3AED', '#E24B4A', '#0EA5E9', '#F59E0B', '#10B981', '#EF4444', '#8B5CF6']
 
 interface Portfolio {
+  [key: string]: unknown
   id: string
   ticker: string
   lot: number
